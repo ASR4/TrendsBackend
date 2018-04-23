@@ -1,4 +1,4 @@
-package com.google.training.helloworld;
+package com.google.training.trends;
 
 import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiMethod;

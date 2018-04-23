@@ -1,4 +1,4 @@
-package com.google.training.helloworld;
+package com.google.training.trends;
 
 public class HelloClass {
     public String message = "Hello World";
