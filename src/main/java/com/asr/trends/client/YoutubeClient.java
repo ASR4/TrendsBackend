@@ -14,7 +14,6 @@ import org.apache.http.impl.client.DefaultHttpClient;
 
 public class YoutubeClient {
 //https://www.googleapis.com/youtube/v3/videos?part=contentDetails&chart=mostPopular&regionCode=IN&maxResults=25&key=API_KEY
-//key=AIzaSyBpQuHxMm6nnK5wKERDiidAkyT8fEm2iJo
 	private static String API_KEY = "";
 	
 	public YoutubeClient() {
