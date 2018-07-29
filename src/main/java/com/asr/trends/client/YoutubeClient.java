@@ -1,7 +1,6 @@
 package com.asr.trends.client;
 
 import java.io.BufferedReader;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -17,16 +16,15 @@ public class YoutubeClient {
 	private static String API_KEY = "";
 	
 	public YoutubeClient() {
-		Properties prop = new Properties();
-	    InputStream input = null;
-	    try {
-	        input = new FileInputStream("config.properties");
-	        // load a properties file
-	        prop.load(input);
-	        API_KEY = prop.getProperty("youtube_key");
-	    } catch (IOException ex) {
-	        ex.printStackTrace();
-	    } 
+		ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+		InputStream input = classLoader.getResourceAsStream("config.properties");
+		Properties properties = new Properties();
+		try {
+			properties.load(input);
+			API_KEY = properties.getProperty("youtube_key");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	public void getTopVideos(String regionCode, String maxResults, String chart) {
 		String url = "https://www.googleapis.com/youtube/v3/videos?part=contentDetails&"

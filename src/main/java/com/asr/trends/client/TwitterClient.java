@@ -1,6 +1,5 @@
 package com.asr.trends.client;
 
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
@@ -19,25 +18,23 @@ public class TwitterClient {
 	private static String ACCESS_TOKEN = "";
 	private static String ACCESS_TOKEN_SECRET = "";
 	
-	public TwitterClient() {
-		Properties prop = new Properties();
-	    InputStream input = null;
-	    try {
-	        input = new FileInputStream("config.properties");
-	        // load a properties file
-	        prop.load(input);
-	        CONSUMER_KEY = prop.getProperty("twitter_consumer_key");
-	        CONSUMER_SECRET = prop.getProperty("twitter_consumer_secret");
-	        ACCESS_TOKEN = prop.getProperty("twitter_access_token");
-	        ACCESS_TOKEN_SECRET = prop.getProperty("twitter_access_token_secret");
-	    } catch (IOException ex) {
-	        ex.printStackTrace();
-	    } 
+	public TwitterClient() {		
+		ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+		InputStream input = classLoader.getResourceAsStream("config.properties");
+		Properties properties = new Properties();
+		try {
+			properties.load(input);
+	        CONSUMER_KEY = properties.getProperty("twitter_consumer_key");
+	        CONSUMER_SECRET = properties.getProperty("twitter_consumer_secret");
+	        ACCESS_TOKEN = properties.getProperty("twitter_access_token");
+	        ACCESS_TOKEN_SECRET = properties.getProperty("twitter_access_token_secret");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public void getTrendsFromLocation(String loc){
 		try {
-
 			ConfigurationBuilder cb = new ConfigurationBuilder();
 			cb.setDebugEnabled(true)
 			.setOAuthConsumerKey(CONSUMER_KEY)
