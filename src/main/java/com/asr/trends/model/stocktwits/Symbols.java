@@ -1,5 +1,7 @@
 package com.asr.trends.model.stocktwits;
 
+import java.util.List;
+
 public class Symbols
 {
     private String id;
@@ -10,7 +12,7 @@ public class Symbols
 
     private String symbol;
 
-    private String[] aliases;
+    private List<String> aliases;
 
     private String watchlist_count;
 
@@ -54,12 +56,12 @@ public class Symbols
         this.symbol = symbol;
     }
 
-    public String[] getAliases ()
+    public List<String> getAliases ()
     {
         return aliases;
     }
 
-    public void setAliases (String[] aliases)
+    public void setAliases (List<String> aliases)
     {
         this.aliases = aliases;
     }

@@ -1,10 +1,12 @@
 package com.asr.trends.model.stocktwits;
 
+import java.util.List;
+
 public class StockTwits
 {
     private Response response;
 
-    private Symbols[] symbols;
+    private List<Symbols> symbols;
 
     public Response getResponse ()
     {
@@ -16,12 +18,12 @@ public class StockTwits
         this.response = response;
     }
 
-    public Symbols[] getSymbols ()
+    public List<Symbols> getSymbols ()
     {
         return symbols;
     }
 
-    public void setSymbols (Symbols[] symbols)
+    public void setSymbols (List<Symbols> symbols)
     {
         this.symbols = symbols;
     }
