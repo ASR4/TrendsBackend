@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import com.asr.trends.cache.ClientCacheLoader;
+import com.asr.trends.cache.ClientPicker;
 import com.asr.trends.cache.ClientResponseCache;
 import com.asr.trends.client.TwitterClient;
 
@@ -18,6 +19,11 @@ public class TrendsServiceFactory {
 	@Bean
 	public ClientResponseCache getClientResponseCache() {
 		return new ClientResponseCache();
+	}
+	
+	@Bean
+	public ClientPicker getClientPicker() {
+		return new ClientPicker();
 	}
 	
 	@Bean

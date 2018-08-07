@@ -2,7 +2,11 @@ package com.asr.trends.client;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
+
+import com.asr.trends.model.Trend;
 
 import twitter4j.Location;
 import twitter4j.ResponseList;
@@ -33,7 +37,8 @@ public class TwitterClient {
 		}
 	}
 	
-	public void getTrendsFromLocation(String loc){
+	public com.asr.trends.model.Trends getTrendsFromLocation(String loc){
+		com.asr.trends.model.Trends trendsList = new com.asr.trends.model.Trends();
 		try {
 			ConfigurationBuilder cb = new ConfigurationBuilder();
 			cb.setDebugEnabled(true)
@@ -53,11 +58,27 @@ public class TwitterClient {
 			}
 
 			Trends trends = twitter.getPlaceTrends(idTrendLocation);
+			List<Trend> listOfTrend = new ArrayList<Trend>();
 			for (int i = 0; i < trends.getTrends().length; i++) {
 				System.out.println(trends.getTrends()[i].getName());
 				System.out.println(trends.getTrends()[i].getURL());
+				
+				//Make the trend object based on the separate hashtags
+				Trend trend = new Trend();
+				trend.setTitle(trends.getTrends()[i].getName());
+				trend.setLink(trends.getTrends()[i].getURL());
+				trend.setImage("not_available");
+				
+				listOfTrend.add(trend);
+				System.out.println(listOfTrend);
 			}
 
+			//Make the Trends object
+			trendsList.setLogo("replace_logo_from_resource");
+			trendsList.setNumOfTrends("10");
+			trendsList.setTrend(listOfTrend.subList(0, 9));
+			trendsList.setType("Twitter");
+			
 			System.exit(0);
 
 		} catch (TwitterException te) {
@@ -65,6 +86,8 @@ public class TwitterClient {
 			System.out.println("Failed to get trends: " + te.getMessage());
 			System.exit(-1);
 		}
+		
+		return trendsList;
 	}
 
 	private static Integer getTrendLocationId(String locationName) {
@@ -109,7 +132,8 @@ public class TwitterClient {
 	
 	public static void main(String[] args) {
 		TwitterClient tClient = new TwitterClient();
-		tClient.getTrendsFromLocation("canada");
+		com.asr.trends.model.Trends trendsList = tClient.getTrendsFromLocation("canada");
+		System.out.println(trendsList);
 	}
 	
 }

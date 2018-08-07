@@ -55,8 +55,8 @@ public class YoutubeClient {
 		}
 	}
 	
-	public static void main(String args[]) {
-		YoutubeClient youtubeClient = new YoutubeClient();
-		youtubeClient.getTopVideos("IN", "10", "mostPopular");
-	}
+//	public static void main(String args[]) {
+//		YoutubeClient youtubeClient = new YoutubeClient();
+//		youtubeClient.getTopVideos("IN", "10", "mostPopular");
+//	}
 }
