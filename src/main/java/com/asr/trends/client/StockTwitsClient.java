@@ -33,7 +33,7 @@ public class StockTwitsClient {
 			}
 		}
 		catch(Exception e){
-			
+			//TODO
 		}
 	}
 	
