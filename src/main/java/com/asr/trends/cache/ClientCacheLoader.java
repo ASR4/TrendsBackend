@@ -1,13 +1,13 @@
 package com.asr.trends.cache;
 
-import javax.inject.Inject;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.asr.trends.model.Trends;
 import com.google.common.cache.CacheLoader;
 
 public class ClientCacheLoader extends CacheLoader<String, Trends> {
 	
-	@Inject
+	@Autowired
 	private ClientPicker clientPicker;
 	
 	@Override

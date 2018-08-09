@@ -1,21 +1,21 @@
 package com.asr.trends.cache;
 
-import javax.inject.Inject;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.asr.trends.client.StockTwitsClient;
 import com.asr.trends.client.TwitterClient;
 import com.asr.trends.model.Trends;
 
 public class ClientPicker {
-	@Inject
+	@Autowired
 	private TwitterClient twitterClient;
 	
-	@Inject
+	@Autowired
 	private StockTwitsClient stockTwitsClient;
 	
 	public Trends fetchTrendsClient(String clientName) {
 		switch(clientName) {
-		   case "youtube" :
+		   case "twitter" :
 		      return twitterClient.getTrendsFromLocation("canada");
 		   
 		   case "stocktwits" :
@@ -25,7 +25,7 @@ public class ClientPicker {
 			  // Statements
 			  break; // optional
 		
-		   case "twitter" :
+		   case "youtube" :
 			  // Statements
 			  break; // optional	      
 		   
@@ -35,5 +35,5 @@ public class ClientPicker {
 		}
 		return null;
 		
-	} 
+	}
 }

@@ -1,6 +1,7 @@
 package com.asr.trends.configs;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 import com.asr.trends.cache.ClientCacheLoader;
@@ -10,6 +11,7 @@ import com.asr.trends.client.StockTwitsClient;
 import com.asr.trends.client.TwitterClient;
 
 @Configuration
+@ComponentScan({"com.asr.trends"})
 public class TrendsServiceFactory {
 
 	@Bean
