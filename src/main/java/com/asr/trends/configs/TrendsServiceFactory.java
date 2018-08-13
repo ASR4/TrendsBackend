@@ -4,7 +4,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
-import com.asr.trends.cache.ClientCacheLoader;
 import com.asr.trends.cache.ClientPicker;
 import com.asr.trends.cache.ClientResponseCache;
 import com.asr.trends.client.StockTwitsClient;
@@ -13,18 +12,15 @@ import com.asr.trends.client.TwitterClient;
 @Configuration
 @ComponentScan({"com.asr.trends"})
 public class TrendsServiceFactory {
-
-	@Bean
-	public ClientCacheLoader getClientCacheLoader() {
-		return new ClientCacheLoader();
-	}
 	
 	@Bean
+//	@Scope(value=WebApplicationContext.SCOPE_REQUEST, proxyMode=ScopedProxyMode.TARGET_CLASS)
 	public ClientResponseCache getClientResponseCache() {
 		return new ClientResponseCache();
 	}
 	
 	@Bean
+//	@Scope(value=WebApplicationContext.SCOPE_REQUEST, proxyMode=ScopedProxyMode.TARGET_CLASS)
 	public ClientPicker getClientPicker() {
 		return new ClientPicker();
 	}
