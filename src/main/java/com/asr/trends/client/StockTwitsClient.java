@@ -42,6 +42,7 @@ public class StockTwitsClient {
 			}
 			
 			//Converting json to Stocktwits pojo and then to Trends pojo
+			System.out.println("[DEBUG] : In side cache call");
 			System.out.println(jsonToPojo(result.toString()));
 			StockTwits stockTwits = jsonToPojo(result.toString());
 			List<Symbols> symbols = stockTwits.getSymbols();
@@ -85,7 +86,7 @@ public class StockTwitsClient {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println(stockTwits);
+//		System.out.println(stockTwits);
 		
 		return stockTwits;
 	}
