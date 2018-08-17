@@ -42,8 +42,8 @@ public class StockTwitsClient {
 			}
 			
 			//Converting json to Stocktwits pojo and then to Trends pojo
-			System.out.println("[DEBUG] : In side cache call");
-			System.out.println(jsonToPojo(result.toString()));
+			System.out.println("[DEBUG] : Inside stocktwits client for cache call");
+//			System.out.println(jsonToPojo(result.toString()));
 			StockTwits stockTwits = jsonToPojo(result.toString());
 			List<Symbols> symbols = stockTwits.getSymbols();
 			
