@@ -25,11 +25,9 @@ public class ClientResponseCacheTest {
 	@Test
 	public void cacheLoader() throws Exception {
 		assertNotNull(clientResponseCache.get("stocktwits"));
-		assertNotNull(clientResponseCache.get("twitter"));
 		assertNotNull(clientResponseCache.get("stocktwits"));
 		assertNotNull(clientResponseCache.get("twitter"));
 		assertNotNull(clientResponseCache.get("stocktwits"));
-		assertNotNull(clientResponseCache.get("twitter"));
 		assertNotNull(clientResponseCache.get("stocktwits"));
 		
 //		assertNotNull(clientResponseCache.get("twitter"));

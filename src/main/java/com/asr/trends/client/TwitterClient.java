@@ -59,10 +59,9 @@ public class TwitterClient {
 
 			Trends trends = twitter.getPlaceTrends(idTrendLocation);
 			List<Trend> listOfTrend = new ArrayList<Trend>();
-			System.out.println("[DEBUG] : Inside twitter client for cache call");
 			for (int i = 0; i < trends.getTrends().length; i++) {
-//				System.out.println(trends.getTrends()[i].getName());
-//				System.out.println(trends.getTrends()[i].getURL());
+				System.out.println(trends.getTrends()[i].getName());
+				System.out.println(trends.getTrends()[i].getURL());
 				
 				//Make the trend object based on the separate hashtags
 				Trend trend = new Trend();
@@ -71,7 +70,7 @@ public class TwitterClient {
 				trend.setImage("not_available");
 				
 				listOfTrend.add(trend);
-//				System.out.println(listOfTrend);
+				System.out.println(listOfTrend);
 			}
 
 			//Make the Trends object
@@ -80,7 +79,7 @@ public class TwitterClient {
 			trendsList.setTrend(listOfTrend.subList(0, 9));
 			trendsList.setType("Twitter");
 			
-//			System.exit(0);
+			System.exit(0);
 
 		} catch (TwitterException te) {
 			te.printStackTrace();

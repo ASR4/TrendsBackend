@@ -8,7 +8,6 @@ import com.asr.trends.cache.ClientPicker;
 import com.asr.trends.cache.ClientResponseCache;
 import com.asr.trends.client.StockTwitsClient;
 import com.asr.trends.client.TwitterClient;
-import com.asr.trends.service.TrendsService;
 
 @Configuration
 @ComponentScan({"com.asr.trends"})
@@ -34,10 +33,5 @@ public class TrendsServiceFactory {
 	@Bean
 	public StockTwitsClient getStockTwitsClient() {
 		return new StockTwitsClient();
-	}
-	
-	@Bean
-	public TrendsService getTrendsService() {
-		return new TrendsService();
 	}
 }
