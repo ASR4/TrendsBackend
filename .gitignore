@@ -1,1 +1,6 @@
 /target/
+
+src/main/resources/config.properties
+src/main/java/com/asr/trends/service/Constants.java
+.settings/org.eclipse.wst.common.component
+*.prefs
