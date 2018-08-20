@@ -16,16 +16,24 @@ public class TrendsService {
 	private final static Logger LOGGER = Logger.getLogger(TrendsService.class.getName());
 	
 	@Autowired
-	private ClientPicker clientPicker;
+	private ClientPicker clientPicker = new ClientPicker();
 	
-	public String fetchListOfTrends(List<String> listOfTrendNames) {
+//	public String fetchListOfTrends(List<String> listOfTrendNames) {
+//		TrendResponse response = new TrendResponse();
+//		List<Trends> listOfTrends = new ArrayList<Trends>();
+//		for(String client : listOfTrendNames) {
+//			listOfTrends.add(clientPicker.fetchTrendsClient(client));
+//		}
+//		response.setTrends(listOfTrends);
+//		return marshalling(response);
+//	}
+	
+	public TrendResponse fetchListOfTrends(String trendName) {
 		TrendResponse response = new TrendResponse();
 		List<Trends> listOfTrends = new ArrayList<Trends>();
-		for(String client : listOfTrendNames) {
-			listOfTrends.add(clientPicker.fetchTrendsClient(client));
-		}
+		listOfTrends.add(clientPicker.fetchTrendsClient(trendName));
 		response.setTrends(listOfTrends);
-		return marshalling(response);
+		return response;
 	}
 	
 	private String marshalling(TrendResponse response) {

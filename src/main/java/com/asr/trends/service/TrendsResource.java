@@ -1,9 +1,8 @@
 package com.asr.trends.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.asr.trends.model.TrendResponse;
 import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiMethod;
 import com.google.api.server.spi.config.ApiMethod.HttpMethod;
@@ -12,7 +11,7 @@ import com.google.api.server.spi.config.Named;
 /**
  * Defines endpoint functions APIs.
  */
-@Api(name = "trendsendpoints", version = "v1",
+@Api(name = "trending", version = "v1",
 scopes = {Constants.EMAIL_SCOPE },
         clientIds = {Constants.WEB_CLIENT_ID, Constants.API_EXPLORER_CLIENT_ID },
         description = "API for trends endpoints.")
@@ -20,7 +19,7 @@ scopes = {Constants.EMAIL_SCOPE },
 public class TrendsResource {
 	
 	@Autowired
-	private TrendsService trendsService;
+	private TrendsService trendsService = new TrendsService();
 
 //    @ApiMethod(name = "sayHello", path = "sayHello",
 //            httpMethod = HttpMethod.GET)
@@ -29,11 +28,12 @@ public class TrendsResource {
 //        return new HelloClass();
 //    }
 
-    @ApiMethod(name = "fetchListOfTrends", path = "fetchTrends",
+    @ApiMethod(name = "fetchTrend", path = "fetchTrend",
             httpMethod = HttpMethod.GET)
 
-    public String fetchListOfTrends (@Named("listOfTrends") List<String> clientNames) {
-        return trendsService.fetchListOfTrends(clientNames);
+    public TrendResponse fetchTrend (@Named("trend") String clientName) {
+//        return trendsService.fetchListOfTrends(clientNames);
+    	 return trendsService.fetchListOfTrends(clientName);
     }
     
 //    @ApiMethod(name = "sayHelloByNamePeriod", path = "sayHelloByNamePeriod",

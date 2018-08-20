@@ -8,10 +8,10 @@ import com.asr.trends.model.Trends;
 
 public class ClientPicker {
 	@Autowired
-	private TwitterClient twitterClient;
+	private TwitterClient twitterClient = new TwitterClient();
 	
 	@Autowired
-	private StockTwitsClient stockTwitsClient;
+	private StockTwitsClient stockTwitsClient = new StockTwitsClient();
 	
 	public Trends fetchTrendsClient(String clientName) {
 		switch(clientName) {
