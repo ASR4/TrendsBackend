@@ -2,8 +2,10 @@ package com.asr.trends.cache;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.asr.trends.client.EbayClient;
 import com.asr.trends.client.StockTwitsClient;
 import com.asr.trends.client.TwitterClient;
+import com.asr.trends.client.WalmartClient;
 import com.asr.trends.model.Trends;
 
 public class ClientPicker {
@@ -12,6 +14,10 @@ public class ClientPicker {
 	
 	@Autowired
 	private StockTwitsClient stockTwitsClient = new StockTwitsClient();
+	
+	private WalmartClient walmartClient = new WalmartClient();
+	
+	private EbayClient ebayClient = new EbayClient();
 	
 	public Trends fetchTrendsClient(String clientName) {
 		switch(clientName) {
@@ -31,6 +37,12 @@ public class ClientPicker {
 			  // Statements
 			  break; // optional	      
 		   
+		   case "walmart" :
+			  return walmartClient.getTrendingItems();
+			
+		   case "ebay" :
+			  return ebayClient.getMostViewedItems();
+				  
 		   // You can have any number of case statements.
 		   default : // Optional
 		      // Statements
