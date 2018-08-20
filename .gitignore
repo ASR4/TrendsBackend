@@ -1,6 +1,13 @@
 /target/
-
 src/main/resources/config.properties
 src/main/java/com/asr/trends/service/Constants.java
 .settings/org.eclipse.wst.common.component
 *.prefs
+.idea/workspace.xml
+.idea/misc.xml
+.idea/vcs.xml
+.idea/.name
+.idea/compiler.xml
+.idea/compiler.xml
+.idea/encodings.xml
+profiles.xml
