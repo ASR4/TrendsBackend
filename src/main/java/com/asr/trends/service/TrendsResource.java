@@ -36,6 +36,14 @@ public class TrendsResource {
     	 return trendsService.fetchListOfTrends(clientName);
     }
     
+    @ApiMethod(name = "fetchAll", path = "fetchAll",
+            httpMethod = HttpMethod.GET)
+
+    public TrendResponse fetchTrend () {
+//        return trendsService.fetchListOfTrends(clientNames);
+    	 return trendsService.fetchAll();
+    }
+    
 //    @ApiMethod(name = "sayHelloByNamePeriod", path = "sayHelloByNamePeriod",
 //            httpMethod = HttpMethod.GET)
 

@@ -76,12 +76,11 @@ public class WalmartClient {
                 listOfTrend.add(trend);
             }
 
-
             //https://www.walmart.com/ip/Sandisk-128-GB-Ultra-Microsdxc-Memory-Card-with-Adapter/46700585?sourceid=api014811cc63ce3142b4961218af0c0c31e4&affp1=DxetGLZg9faaknZvevdd5-n_TulIRdv5HmHFjm8l078&affilsrc=api&veh=aff&wmlspartner=readonlyapi
             //https://www.walmart.com/ip/Google-Play-100-Gift-Code-Email-Delivery/52897898?sourceid=api0129e446558191478497842d4b182e8adf&affp1=DxetGLZg9faaknZvevdd5-n_TulIRdv5HmHFjm8l078&affilsrc=api&veh=aff&wmlspartner=readonlyapi
-            // trends.setLogo("replace_logo_from_resource");
+            
 
-
+         // trends.setLogo("replace_logo_from_resource");
             trends.setNumOfTrends("10");
             trends.setTrend(listOfTrend.subList(0, 9));
             trends.setType("Walmart");
