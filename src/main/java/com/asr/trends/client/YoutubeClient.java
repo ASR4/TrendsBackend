@@ -13,6 +13,8 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 import com.asr.trends.model.Trend;
@@ -99,21 +101,7 @@ public class YoutubeClient {
 	
 	public static String getTitleQuietly(String itemId) {
 		String url = "https://www.googleapis.com/youtube/v3/videos?part=id%2C+snippet&id=" + itemId + "&key=" + API_KEY;
-//	    try {
-//	        if (youtubeUrl != null) {
-//	            URL embededURL = new URL("http://www.youtube.com/oembed?url=" +
-//	                youtubeUrl + "&format=json"
-//	            );
-//	            JSONParser parser = new JSONParser();
-//	            org.json.simple.JSONObject json = (org.json.simple.JSONObject) parser.parse(embededURL.toString());
-//	            System.out.println((String) json.get("title"));
-//	            return (String) json.get("title");
-//	        }
-//
-//	    } catch (Exception e) {
-//	        e.printStackTrace();
-//	    }
-//	    return null;
+
 		String title = "";
 		try{
 			HttpClient client = new DefaultHttpClient();
@@ -130,10 +118,10 @@ public class YoutubeClient {
 			StringBuffer result = new StringBuffer();
 			String line = "";
 			while ((line = rd.readLine()) != null) {
-				System.out.println(line);
+//				System.out.println(line);
 				result.append(line);
 			}
-			JSONObject jsonObject = new JSONObject(response);
+			JSONObject jsonObject = new JSONObject(result.toString());
             JSONArray jsonArray = jsonObject.getJSONArray("items");
 
             JSONObject object = jsonArray.getJSONObject(0);
@@ -144,19 +132,57 @@ public class YoutubeClient {
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
+		System.out.println("Title : " + title);
 		return title;
 	}
 	
 	 public static String getImageUrlQuietly(String youtubeUrl, String itemId) {
-	        try {
-	            if (youtubeUrl != null) {
-	                return String.format("http://img.youtube.com/vi/%s/0.jpg", itemId);
-	            }
-	        } catch (UnsupportedOperationException e) {
-	            e.printStackTrace();
-	        }
-	        return null;
-	    }
+//	        try {
+//	            if (youtubeUrl != null) {
+//	                return String.format("http://img.youtube.com/vi/%s/0.jpg", itemId);
+//	            }
+//	        } catch (UnsupportedOperationException e) {
+//	            e.printStackTrace();
+//	        }
+//	        return null;
+		 
+		 String url = "https://www.googleapis.com/youtube/v3/videos?part=id%2C+snippet&id=" + itemId + "&key=" + API_KEY;
+
+			String image = "";
+			try{
+				HttpClient client = new DefaultHttpClient();
+				HttpGet request = new HttpGet(url);
+
+				HttpResponse response = client.execute(request);
+
+				System.out.println("Response Code : " 
+		                	+ response.getStatusLine().getStatusCode());
+
+				BufferedReader rd = new BufferedReader(
+						new InputStreamReader(response.getEntity().getContent()));
+
+				StringBuffer result = new StringBuffer();
+				String line = "";
+				while ((line = rd.readLine()) != null) {
+//					System.out.println(line);
+					result.append(line);
+				}
+				JSONObject jsonObject = new JSONObject(result.toString());
+	            JSONArray jsonArray = jsonObject.getJSONArray("items");
+
+	            JSONObject object = jsonArray.getJSONObject(0);
+	            JSONObject snippet = object.getJSONObject("snippet");
+	            JSONObject thumbnails = snippet.getJSONObject("thumbnails");
+	            JSONObject defaultImage = thumbnails.getJSONObject("default");
+
+	            image = defaultImage.getString("url");
+	            
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+			System.out.println("Image : " + image);
+			return image;
+		}
 
 	public static void main(String args[]) {
 		YoutubeClient youtubeClient = new YoutubeClient();
