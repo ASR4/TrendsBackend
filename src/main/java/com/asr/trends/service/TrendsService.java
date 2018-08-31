@@ -13,7 +13,7 @@ import com.asr.trends.model.Trends;
 
 public class TrendsService {
 	private final static Logger LOGGER = Logger.getLogger(TrendsService.class.getName());
-	private List<String> listOfClients = Arrays.asList("youtube", "ebay", "walmart", "google", "stocktwits", "twitter", "instagram");
+	private List<String> listOfClients = Arrays.asList("youtube", "ebay", "walmart", "stocktwits", "twitter");
 	
 	@Autowired
 	private ClientPicker clientPicker = new ClientPicker();

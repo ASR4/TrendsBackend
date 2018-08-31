@@ -73,7 +73,7 @@ public class YoutubeClient {
 	                trend.setImage(getImageUrlQuietly(youTubeUrl, item.getId()));
 	                listOfTrend.add(trend);
 	            }
-	            trendsList.setLogo("replace_logo_from_resource");
+	            trendsList.setLogo("YouTube_logo");
 				trendsList.setNumOfTrends("10");
 				trendsList.setTrend(listOfTrend.subList(0, 9));
 				trendsList.setType("YouTube");

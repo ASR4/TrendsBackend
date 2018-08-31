@@ -75,7 +75,7 @@ public class TwitterClient {
 			}
 
 			//Make the Trends object
-			trendsList.setLogo("replace_logo_from_resource");
+			trendsList.setLogo("Twitter_logo");
 			trendsList.setNumOfTrends("10");
 			trendsList.setTrend(listOfTrend.subList(0, 9));
 			trendsList.setType("Twitter");

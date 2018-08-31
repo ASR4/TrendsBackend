@@ -56,7 +56,7 @@ public class StockTwitsClient {
 				listOfTrend.add(trend);
 			}
 			
-			trends.setLogo("replace_logo_from_resource");
+			trends.setLogo("Stocktwits_logo");
 			trends.setNumOfTrends("10");
 			trends.setTrend(listOfTrend.subList(0, 9));
 			trends.setType("StockTwits");

@@ -73,7 +73,7 @@ public class EbayClient {
                 trend.setImage(item.getImageURL());
                 listOfTrend.add(trend);
             }
-
+            trends.setLogo("Ebay_logo");
             trends.setNumOfTrends("10");
             trends.setTrend(listOfTrend.subList(0, 9));
             trends.setType("Ebay");
