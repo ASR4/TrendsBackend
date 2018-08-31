@@ -32,7 +32,7 @@ public class EbayClient {
         Properties properties = new Properties();
         try {
             properties.load(input);
-            COMSUMER_ID = properties.getProperty("ebay_custoer_id");
+            COMSUMER_ID = properties.getProperty("ebay_customer_id");
         } catch (IOException e) {
             e.printStackTrace();
         }

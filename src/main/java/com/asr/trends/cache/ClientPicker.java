@@ -37,7 +37,7 @@ public class ClientPicker {
 			  break; // optional
 		
 		   case "youtube" :
-//			  return youtubeClient.getTopVideos("US", "10", "mostPopular");	      
+			  return youtubeClient.getTopVideos("US", "10", "mostPopular");	      
 		   
 		   case "walmart" :
 			  return walmartClient.getTrendingItems();
@@ -48,7 +48,6 @@ public class ClientPicker {
 		   case "instagram" :
 			  break;	  
 				  
-		   // You can have any number of case statements.
 		   default : // Optional
 		      // Statements
 		}

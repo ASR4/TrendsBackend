@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -15,7 +14,6 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.json.simple.parser.JSONParser;
 
 import com.asr.trends.model.Trend;
 import com.asr.trends.model.youtube.Items;
@@ -38,7 +36,7 @@ public class YoutubeClient {
 			e.printStackTrace();
 		}
 	}
-	public void /*com.asr.trends.model.Trends*/ getTopVideos(String regionCode, String maxResults, String chart) {
+	public com.asr.trends.model.Trends getTopVideos(String regionCode, String maxResults, String chart) {
 		com.asr.trends.model.Trends trendsList = new com.asr.trends.model.Trends();
 		String url = "https://www.googleapis.com/youtube/v3/videos?part=contentDetails&"
 				+ "chart=" + chart + "&regionCode=" + regionCode + "&maxResults=" + maxResults 
@@ -75,13 +73,18 @@ public class YoutubeClient {
 	                trend.setImage(getImageUrlQuietly(youTubeUrl, item.getId()));
 	                listOfTrend.add(trend);
 	            }
-			 
+	            trendsList.setLogo("replace_logo_from_resource");
+				trendsList.setNumOfTrends("10");
+				trendsList.setTrend(listOfTrend.subList(0, 9));
+				trendsList.setType("YouTube");
+				return trendsList;
 		}
 		catch(Exception e){
 			e.printStackTrace();
 			System.out.println("Failed to get trends: " + e.getMessage());
 			System.exit(-1);
 		}
+		return trendsList;
 	}
 	
 	private YouTube jsonToPojo(String json) {
