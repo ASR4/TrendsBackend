@@ -21,33 +21,18 @@ public class TrendsResource {
 	@Autowired
 	private TrendsService trendsService = new TrendsService();
 
-//    @ApiMethod(name = "sayHello", path = "sayHello",
-//            httpMethod = HttpMethod.GET)
-
-//    public String fetchTrend() {
-//        return new HelloClass();
-//    }
-
     @ApiMethod(name = "fetchTrend", path = "fetchTrend",
             httpMethod = HttpMethod.GET)
 
     public TrendResponse fetchTrend (@Named("trend") String clientName) {
-//        return trendsService.fetchListOfTrends(clientNames);
     	 return trendsService.fetchListOfTrends(clientName);
     }
     
     @ApiMethod(name = "fetchAll", path = "fetchAll",
             httpMethod = HttpMethod.GET)
 
-    public TrendResponse fetchTrend () {
-//        return trendsService.fetchListOfTrends(clientNames);
+    public TrendResponse fetchTrendAll () {
     	 return trendsService.fetchAll();
     }
     
-//    @ApiMethod(name = "sayHelloByNamePeriod", path = "sayHelloByNamePeriod",
-//            httpMethod = HttpMethod.GET)
-
-//    public String sayHelloByNamePeriod (@Named("name") String name, @Named("period") String period) {
-//        return new HelloClass(name, period);
-//    }
 }
