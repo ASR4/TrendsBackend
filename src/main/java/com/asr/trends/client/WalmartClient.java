@@ -61,7 +61,7 @@ public class WalmartClient {
                 result.append(line);
             }
 
-            //Converting json to Stocktwits pojo and then to Trends pojo
+            //Converting json to Walmart pojo and then to Trends pojo
             System.out.println(jsonToPojo(result.toString()));
             Walmart walmart = jsonToPojo(result.toString());
             List<Items> items = walmart.getItems();
