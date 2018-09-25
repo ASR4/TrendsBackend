@@ -15,9 +15,9 @@ import com.asr.trends.model.Trend;
 import com.asr.trends.model.Trends;
 import com.asr.trends.model.stocktwits.StockTwits;
 import com.asr.trends.model.stocktwits.Symbols;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.appengine.repackaged.org.codehaus.jackson.JsonParseException;
-import com.google.appengine.repackaged.org.codehaus.jackson.map.JsonMappingException;
-import com.google.appengine.repackaged.org.codehaus.jackson.map.ObjectMapper;
 
 public class StockTwitsClient {
 //	https://api.stocktwits.com/api/2/trending/symbols.json?access_token=<access_token>

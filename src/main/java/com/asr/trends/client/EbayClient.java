@@ -1,19 +1,6 @@
 package com.asr.trends.client;
 
 
-import com.asr.trends.model.Trend;
-import com.asr.trends.model.Trends;
-import com.asr.trends.model.ebay.Ebay;
-import com.asr.trends.model.ebay.Item;
-
-import com.google.appengine.repackaged.org.codehaus.jackson.JsonParseException;
-import com.google.appengine.repackaged.org.codehaus.jackson.map.DeserializationConfig;
-import com.google.appengine.repackaged.org.codehaus.jackson.map.JsonMappingException;
-import com.google.appengine.repackaged.org.codehaus.jackson.map.ObjectMapper;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -21,6 +8,20 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+
+import com.asr.trends.model.Trend;
+import com.asr.trends.model.Trends;
+import com.asr.trends.model.ebay.Ebay;
+import com.asr.trends.model.ebay.Item;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.appengine.repackaged.org.codehaus.jackson.JsonParseException;
 
 public class EbayClient {
     private static String COMSUMER_ID;
@@ -92,7 +93,7 @@ public class EbayClient {
 
         Ebay ebay = null;
         try {
-            mapper.configure(DeserializationConfig.Feature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+            mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
             ebay = mapper.readValue(json, Ebay.class); // parent class
         } catch (JsonParseException e) {
             // TODO Auto-generated catch block

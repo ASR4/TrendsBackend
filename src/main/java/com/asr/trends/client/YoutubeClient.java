@@ -18,8 +18,8 @@ import org.json.JSONObject;
 import com.asr.trends.model.Trend;
 import com.asr.trends.model.youtube.Items;
 import com.asr.trends.model.youtube.YouTube;
-import com.google.appengine.repackaged.org.codehaus.jackson.map.DeserializationConfig;
-import com.google.appengine.repackaged.org.codehaus.jackson.map.ObjectMapper;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class YoutubeClient {
 //https://www.googleapis.com/youtube/v3/videos?part=contentDetails&chart=mostPopular&regionCode=IN&maxResults=25&key=API_KEY
@@ -92,7 +92,7 @@ public class YoutubeClient {
 		
 		YouTube youTube = null;
 		
-		mapper.configure(DeserializationConfig.Feature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+		mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 		try {
 			youTube = mapper.readValue(json, YouTube.class);
 		} catch (IOException e) {

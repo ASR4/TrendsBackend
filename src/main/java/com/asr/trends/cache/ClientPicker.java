@@ -25,11 +25,9 @@ public class ClientPicker {
 	public Trends fetchTrendsClient(String clientName) {
 		switch(clientName) {
 		   case "twitter" :
-			  System.out.println("Inside clientpicker for TWITTER"); 
 		      return twitterClient.getTrendsFromLocation("canada");
 		   
 		   case "stocktwits" :
-			  System.out.println("Inside clientpicker for STOCKTWITS");
 		      return stockTwitsClient.getTrendingSymbols();
 		      
 		   case "google" :
